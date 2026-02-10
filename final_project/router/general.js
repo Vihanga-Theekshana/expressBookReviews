@@ -54,15 +54,17 @@ public_users.get('/isbn/:isbn',function (req, res) {
     return res.status(404).json({ message: "Book not found" });
  });
 
- public_users.get('/async/isbn/:isbn',async(req,res)=>{
-    try{
+ public_users.get('/async/isbn/:isbn', async (req, res) => {
+    const isbn = req.params.isbn;
+
+    try {
         const response = await axios.get(`http://localhost:5000/isbn/${isbn}`);
         return res.status(200).json(response.data);
-
-    }catch(err){
+    } catch (err) {
         return res.status(404).json({ message: "Book not found" });
     }
- })
+});
+
   
 // Get book details based on author
 public_users.get('/author/:author',function (req, res) {
@@ -114,5 +116,26 @@ public_users.get('/review/:isbn',function (req, res) {
   return res.status(404).json({ message: "book not found" });
 
 });
+public_users.get('/async/author/:author', async (req, res) => {
+    const author = req.params.author;
+
+    try {
+        const response = await axios.get(`http://localhost:5000/author/${encodeURIComponent(author)}`);
+        return res.status(200).json(response.data);
+    } catch (err) {
+        return res.status(404).json({ message: "Book not found" });
+    }
+});
+public_users.get('/async/title/:title', async (req, res) => {
+    const title = req.params.title;
+
+    try {
+        const response = await axios.get(`http://localhost:5000/title/${encodeURIComponent(title)}`);
+        return res.status(200).json(response.data);
+    } catch (err) {
+        return res.status(404).json({ message: "Book not found" });
+    }
+});
+
 
 module.exports.general = public_users;
