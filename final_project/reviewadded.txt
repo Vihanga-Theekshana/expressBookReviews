@@ -1,3 +1,2 @@
-theia@theia-theekshanavi:/home/project/expressBookReviews/final_project$ curl -b cookie.txt -X PUT "http://localhost:5000/customer/auth/review/1?review=Nice%20book"
+curl -b cookie.txt -X PUT "http://localhost:5000/customer/auth/review/1?review=Nice%20book"
 {"message":"Review added/updated","reviews":{"testuser":"Nice book"}}
-theia@theia-theekshanavi:/home/project/expressBookReviews/final_project$

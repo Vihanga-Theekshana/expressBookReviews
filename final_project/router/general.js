@@ -10,8 +10,6 @@ const axios = require("axios");
 public_users.post("/register", (req,res) => {
   //Write your code here
   const { username, password } = req.body;
-
-
   // Check if both username and password are provided
   if (username && password) {
       // Check if the user does not already exist
